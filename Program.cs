@@ -7,7 +7,7 @@ namespace AdventOfCode
         static void Main(string[] args)
         {
             Day03 driver = new Day03();
-            Console.WriteLine(driver.OverlapInches());
+            Console.WriteLine(driver.ValidClaim());
         }
     }
 }

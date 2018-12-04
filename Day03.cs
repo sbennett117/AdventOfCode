@@ -20,7 +20,7 @@ namespace AdventOfCode
             return posInt.Concat(dimInt).Concat(new int[]{id}).ToArray();
         }
 
-        private int[,] GenerateGrid(string[] lines)
+        public int[,] GenerateGrid(string[] lines)
         {
             int[,] grid = new int[1000, 1000];
             foreach (string line in lines)
@@ -58,6 +58,33 @@ namespace AdventOfCode
             }
 
             return overlap;
+        }
+
+        public int ValidClaim()
+        {
+            string[] lines = System.IO.File.ReadAllLines(@"Day03.txt");
+            int[,] grid = GenerateGrid(lines);
+            foreach (string line in lines)
+            {
+                int[] claim = ParseClaim(line);
+                bool claimOverlapped = false;
+                for (int i = claim[0]; i < claim[0] + claim[2] && !claimOverlapped; i++)
+                {
+                    for (int j = claim[1]; j < claim[1] + claim[3] && !claimOverlapped; j++)
+                    {
+                        if (grid[i, j] == -1)
+                        {
+                            claimOverlapped = true;
+                        }
+                    }
+                }
+                if (!claimOverlapped)
+                {
+                    return claim[4];
+                }
+            }
+
+            return 0;
         }
     }
 }
