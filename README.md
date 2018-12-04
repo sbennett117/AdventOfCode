@@ -5,8 +5,9 @@ I will be doing these solutions in flat-folder C#. I'm new to the language, but 
 
 # Current Progress
 ## 2018
-| Day   | Progress |
-|-------|----------|
-| Day 1 | 2 Stars  |
-| Day 2 | 2 Stars  |
-| Day 3 | 2 Stars  |
+| Day   | Progress    |
+|-------|-------------|
+| Day 1 | 2 Stars     |
+| Day 2 | 2 Stars     |
+| Day 3 | 2 Stars     |
+| Day 4 | In Progress |
