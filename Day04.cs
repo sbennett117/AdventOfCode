@@ -9,29 +9,7 @@ namespace AdventOfCode
         {
             string[] lines = System.IO.File.ReadAllLines(@"Day04.txt");
             Array.Sort(lines);  // dates in ISO format, natively sorts how we want
-            Dictionary<int, Guard> guards = new Dictionary<int, Guard>();
-
-            for (int i = 0; i < lines.Length;)
-            {
-                int id = int.Parse(lines[i].Split(' ')[3].Substring(1));
-                i++;
-                int[] minutes = new int[60];
-                while (i < lines.Length && !lines[i].Contains("begins"))
-                {
-                    int sleep = int.Parse(lines[i].Substring(15, 2));
-                    int awake = int.Parse(lines[i+1].Substring(15, 2));
-                    for (; sleep < awake; sleep++)
-                    {
-                        minutes[sleep] += 1;
-                    }
-                    i += 2;
-                }
-                if (!guards.ContainsKey(id))
-                {
-                    guards.Add(id, new Guard(id));
-                }
-                guards[id].AddNight(minutes);
-            }
+            Dictionary<int, Guard> guards = AssembleGuards(lines);
 
             int maxID = 0;
             int[] maxReport = new int[2];
@@ -45,7 +23,57 @@ namespace AdventOfCode
                 }
             }
 
-            return maxReport[0] * maxReport[1];
+            return maxID * maxReport[1];
+        }
+
+        public int StrategyTwo()
+        {
+            string[] lines = System.IO.File.ReadAllLines(@"Day04.txt");
+            Array.Sort(lines);  // dates in ISO format, natively sorts how we want
+            Dictionary<int, Guard> guards = AssembleGuards(lines);
+
+            int maxID = 0;
+            int[] maxFM = new int[2];
+            foreach(int g in guards.Keys)
+            {
+                int[] fm = guards[g].FrequentMinute();
+                if (fm[1] > maxFM[1])
+                {
+                    maxFM = fm;
+                    maxID = g;
+                }
+            }
+
+            return maxID * maxFM[0];
+        }
+
+        private Dictionary<int, Guard> AssembleGuards(string[] lines)
+        {
+            Dictionary<int, Guard> guards = new Dictionary<int, Guard>();
+
+            for (int i = 0; i < lines.Length;)
+            {
+                int id = int.Parse(lines[i].Split(' ')[3].Substring(1));
+                i++;
+                int[] minutes = new int[60];
+                while (i < lines.Length && !lines[i].Contains("begins"))
+                {
+                    int sleep = int.Parse(lines[i].Substring(15, 2));
+                    int awake = int.Parse(lines[i + 1].Substring(15, 2));
+                    for (; sleep < awake; sleep++)
+                    {
+                        minutes[sleep] += 1;
+                    }
+                    i += 2;
+                }
+                if (!guards.ContainsKey(id))
+                {
+                    guards.Add(id, new Guard(id));
+                }
+                guards[id].AddNight(minutes);
+            }
+
+            return guards;
         }
     }
 
@@ -74,12 +102,25 @@ namespace AdventOfCode
             for (int i = 0; i < minutesAsleep.Length; i++)
             {
                 count += minutesAsleep[i];
-                if (minutesAsleep[i] > max)
+                if (minutesAsleep[i] > minutesAsleep[max])
                 {
                     max = i;
                 }
             }
             return new int[]{ count, max };
+        }
+
+        public int[] FrequentMinute()
+        {
+            int max = 0;
+            for (int i = 0; i < minutesAsleep.Length; i++)
+            {
+                if (minutesAsleep[i] > minutesAsleep[max])
+                {
+                    max = i;
+                }
+            }
+            return new int[] { max, minutesAsleep[max] };
         }
 
         public override string ToString()

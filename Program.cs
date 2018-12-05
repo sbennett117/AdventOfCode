@@ -7,7 +7,7 @@ namespace AdventOfCode
         static void Main(string[] args)
         {
             Day04 driver = new Day04();
-            Console.WriteLine(driver.StrategyOne());
+            Console.WriteLine(driver.StrategyTwo());
         }
     }
 }

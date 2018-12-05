@@ -10,4 +10,4 @@ I will be doing these solutions in flat-folder C#. I'm new to the language, but 
 | Day 1 | 2 Stars     |
 | Day 2 | 2 Stars     |
 | Day 3 | 2 Stars     |
-| Day 4 | In Progress |
+| Day 4 | 2 Stars     |
