@@ -11,4 +11,4 @@ I will be doing these solutions in flat-folder C#. I'm new to the language, but 
 | Day 2 | 2 Stars     |
 | Day 3 | 2 Stars     |
 | Day 4 | 2 Stars     |
-| Day 5 | In Progress |
+| Day 5 | 2 Stars     |
