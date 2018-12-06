@@ -6,8 +6,8 @@ namespace AdventOfCode
     {
         static void Main(string[] args)
         {
-            Day05 driver = new Day05();
-            Console.WriteLine(driver.SplicePolymer());
+            Day06 driver = new Day06();
+            Console.WriteLine(driver.CloseRegion());
         }
     }
 }
