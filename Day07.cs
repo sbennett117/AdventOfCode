@@ -19,14 +19,65 @@ namespace AdventOfCode
                 tasks[key].AddDependency(d);
             }
 
-            string taskList = "";
-            while (NextTask(tasks, taskList) != '!')
+            string taskList = "" + NextTask(tasks, "");
+            tasks.Remove(taskList[0]);
+            while (taskList[taskList.Length - 1] != '!')
             {
                 taskList += NextTask(tasks, taskList);
                 tasks.Remove(taskList[taskList.Length-1]);
             }
 
             return taskList;
+        }
+
+        public int TimeToComplete()
+        {
+            string[] lines = System.IO.File.ReadAllLines(@"Day07.txt");
+            SortedDictionary<char, Task> tasks = new SortedDictionary<char, Task>();
+            foreach(string line in lines)
+            {
+                string[] splitLine = line.Split(' ');
+                char key = splitLine[7][0];
+                char d = splitLine[1][0];
+                if (!tasks.ContainsKey(key)) tasks.Add(key, new Task(key));
+                if (!tasks.ContainsKey(d)) tasks.Add(d, new Task(d));
+                tasks[key].AddDependency(d);
+            }
+
+            int ttc = 0;
+            string completed = "";
+            List<Task> workers = new List<Task>();
+
+            while (tasks.Count > 0 || workers.Count > 0)
+            {
+                while (workers.Count < 6)
+                {
+                    char task = NextTask(tasks, completed);
+                    if (task == '!') break;
+                    workers.Add(tasks[task]);
+                    tasks.Remove(task);
+                }
+
+                int shortestTTC = int.MaxValue;
+                foreach (Task t in workers)
+                {
+                    shortestTTC = Math.Min(shortestTTC, t.TTC);
+                }
+
+                ttc += shortestTTC;
+                for (int i = 0; i < workers.Count;)
+                {
+                    workers[i].TTC -= shortestTTC;
+                    if (workers[i].TTC == 0)
+                    {
+                        completed += workers[i].ID;
+                        workers.RemoveAt(i);
+                    }
+                    else i++;
+                }
+            }
+
+            return ttc;
         }
 
         char NextTask(SortedDictionary<char, Task> tasks, string completed) {
@@ -43,12 +94,14 @@ namespace AdventOfCode
     class Task : IComparable
     {
         public char ID { get; set; }
-        ISet<char> dependencies;
+        readonly ISet<char> dependencies;
+        public int TTC { get; set; }
 
         public Task(char id)
         {
-            this.ID = id;
-            this.dependencies = new HashSet<char>();
+            ID = id;
+            dependencies = new HashSet<char>();
+            TTC = 61 + (id - 'A');  // A = 61 + 0; B = 61 + 1; etc;
         }
 
         public bool AddDependency(char d)

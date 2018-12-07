@@ -7,7 +7,7 @@ namespace AdventOfCode
         static void Main(string[] args)
         {
             Day07 driver = new Day07();
-            Console.WriteLine(driver.TaskList());
+            Console.WriteLine(driver.TimeToComplete());
         }
     }
 }
