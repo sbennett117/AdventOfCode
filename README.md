@@ -15,5 +15,5 @@ I will be doing these solutions in flat-folder C#. I'm new to the language, but 
 | Day 06 | 2 Stars     |
 | Day 07 | 2 Stars     |
 | Day 08 | 2 Stars     |
-| Day 09 | Not Started |
+| Day 09 | 1 Star      |
 | Day 10 | Not Started |

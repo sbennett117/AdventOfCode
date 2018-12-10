@@ -6,8 +6,8 @@ namespace AdventOfCode
     {
         static void Main(string[] args)
         {
-            Day08 driver = new Day08();
-            Console.WriteLine(driver.RootValue());
+            Day09 driver = new Day09();
+            Console.WriteLine(driver.HighScore());
         }
     }
 }
