@@ -36,5 +36,41 @@ namespace AdventOfCode
             Array.Sort(players, (int x, int y) => -(x.CompareTo(y)));
             return players[0];
         }
+
+        public int HigherScore()
+        {
+            string[] input = System.IO.File.ReadAllLines(@"Day09.txt")[0].Split(' ');
+            int playerCount = int.Parse(input[0]);
+            int targetScore = int.Parse(input[6]) * 100;
+
+            int[] players = new int[playerCount];
+            LinkedList<int> marbles = new LinkedList<int>(new int[1]);
+
+            for (int i = 1; i < targetScore; i++)
+            {
+                if (i % 23 == 0)
+                {
+                    for(int j = 0; j < 7; j++)
+                    {
+                        marbles.AddFirst(marbles.Last());
+                        marbles.RemoveLast();
+                    }
+                    int points = i + marbles.Last();
+                    players[i % playerCount] += points;
+                    marbles.RemoveLast();
+                    marbles.AddLast(marbles.First());
+                    marbles.RemoveFirst();
+                }
+                else
+                {
+                    marbles.AddLast(marbles.First());
+                    marbles.RemoveFirst();
+                    marbles.AddLast(i);
+                }
+            }
+
+            Array.Sort(players, (int x, int y) => -(x.CompareTo(y)));
+            return players[0];
+        }
     }
 }
