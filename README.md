@@ -5,13 +5,15 @@ I will be doing these solutions in flat-folder C#. I'm new to the language, but 
 
 # Current Progress
 ## 2018
-| Day   | Progress    |
-|-------|-------------|
-| Day 1 | 2 Stars     |
-| Day 2 | 2 Stars     |
-| Day 3 | 2 Stars     |
-| Day 4 | 2 Stars     |
-| Day 5 | 2 Stars     |
-| Day 6 | 2 Stars     |
-| Day 7 | 2 Stars     |
-
+| Day    | Progress    |
+|--------|-------------|
+| Day 01 | 2 Stars     |
+| Day 02 | 2 Stars     |
+| Day 03 | 2 Stars     |
+| Day 04 | 2 Stars     |
+| Day 05 | 2 Stars     |
+| Day 06 | 2 Stars     |
+| Day 07 | 2 Stars     |
+| Day 08 | 2 Stars     |
+| Day 09 | Not Started |
+| Day 10 | Not Started |
