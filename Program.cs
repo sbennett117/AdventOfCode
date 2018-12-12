@@ -6,8 +6,7 @@ namespace AdventOfCode
     {
         static void Main(string[] args)
         {
-            Day09 driver = new Day09();
-            Console.WriteLine(driver.HighScore());
+            new Day11().MostPowerfulSquare();
         }
     }
 }

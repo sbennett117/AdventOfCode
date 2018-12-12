@@ -17,5 +17,5 @@ I will be doing these solutions in flat-folder C#. I'm new to the language, but 
 | Day 08 | 2 Stars     |
 | Day 09 | 1 Star-DNF  |
 | Day 10 | 0 Stars-DNF |
-| Day 11 | Not Started |
+| Day 11 | 2 Stars     |
 | Day 12 | Not Started |
