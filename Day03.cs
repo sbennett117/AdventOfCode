@@ -47,7 +47,7 @@ namespace AdventOfCode
         public int OverlapInches()
         {
             int overlap = 0;
-            string[] lines = System.IO.File.ReadAllLines(@"Day03.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"input/Day03.txt");
             int[,] grid = GenerateGrid(lines);
             foreach(int i in grid)
             {
@@ -62,7 +62,7 @@ namespace AdventOfCode
 
         public int ValidClaim()
         {
-            string[] lines = System.IO.File.ReadAllLines(@"Day03.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"input/Day03.txt");
             int[,] grid = GenerateGrid(lines);
             foreach (string line in lines)
             {

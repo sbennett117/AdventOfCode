@@ -7,7 +7,7 @@ namespace AdventOfCode
     {
         public string TaskList()
         {
-            string[] lines = System.IO.File.ReadAllLines(@"Day07.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"input/Day07.txt");
             SortedDictionary<char, Task> tasks = new SortedDictionary<char, Task>();
             foreach(string line in lines)
             {
@@ -32,7 +32,7 @@ namespace AdventOfCode
 
         public int TimeToComplete()
         {
-            string[] lines = System.IO.File.ReadAllLines(@"Day07.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"input/Day07.txt");
             SortedDictionary<char, Task> tasks = new SortedDictionary<char, Task>();
             foreach(string line in lines)
             {

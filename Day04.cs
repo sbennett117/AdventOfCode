@@ -7,7 +7,7 @@ namespace AdventOfCode
     {
         public int StrategyOne()
         {
-            string[] lines = System.IO.File.ReadAllLines(@"Day04.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"input/Day04.txt");
             Array.Sort(lines);  // dates in ISO format, natively sorts how we want
             Dictionary<int, Guard> guards = AssembleGuards(lines);
 
@@ -28,7 +28,7 @@ namespace AdventOfCode
 
         public int StrategyTwo()
         {
-            string[] lines = System.IO.File.ReadAllLines(@"Day04.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"input/Day04.txt");
             Array.Sort(lines);  // dates in ISO format, natively sorts how we want
             Dictionary<int, Guard> guards = AssembleGuards(lines);
 

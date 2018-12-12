@@ -5,7 +5,7 @@ namespace AdventOfCode
     {
         public int SumMetadata()
         {
-            string[] licence = System.IO.File.ReadAllLines(@"Day08.txt")[0].Split(' ');
+            string[] licence = System.IO.File.ReadAllLines(@"input/Day08.txt")[0].Split(' ');
             TreeNode root = BuildNode(licence, 0).Item2;
 
             return root.SumMeta();
@@ -13,7 +13,7 @@ namespace AdventOfCode
 
         public int RootValue()
         {
-            string[] licence = System.IO.File.ReadAllLines(@"Day08.txt")[0].Split(' ');
+            string[] licence = System.IO.File.ReadAllLines(@"input/Day08.txt")[0].Split(' ');
             TreeNode root = BuildNode(licence, 0).Item2;
 
             return root.NodeValue();

@@ -8,7 +8,7 @@ namespace AdventOfCode
     {
         public int HighScore()
         {
-            string[] input = System.IO.File.ReadAllLines(@"Day09.txt")[0].Split(' ');
+            string[] input = System.IO.File.ReadAllLines(@"input/Day09.txt")[0].Split(' ');
             int playerCount = int.Parse(input[0]);
             int targetScore = int.Parse(input[6]);
 
@@ -39,7 +39,7 @@ namespace AdventOfCode
 
         public int HigherScore()
         {
-            string[] input = System.IO.File.ReadAllLines(@"Day09.txt")[0].Split(' ');
+            string[] input = System.IO.File.ReadAllLines(@"input/Day09.txt")[0].Split(' ');
             int playerCount = int.Parse(input[0]);
             int targetScore = int.Parse(input[6]) * 100;
 

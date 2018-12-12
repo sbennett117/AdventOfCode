@@ -7,7 +7,7 @@ namespace AdventOfCode
     {
         public int ReducePolymer()
         {
-            string units = System.IO.File.ReadAllLines(@"Day05.txt")[0];
+            string units = System.IO.File.ReadAllLines(@"input/Day05.txt")[0];
             List<char> polymer = new List<char>(units);
             int recordedLength = polymer.Count + 1; // rL >= Length
 
@@ -33,7 +33,7 @@ namespace AdventOfCode
 
         public int SplicePolymer()
         {
-            string units = System.IO.File.ReadAllLines(@"Day05.txt")[0];
+            string units = System.IO.File.ReadAllLines(@"input/Day05.txt")[0];
             ISet<char> uniqueUnits = new HashSet<char>();
             foreach (char c in units.ToLower())
             {

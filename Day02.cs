@@ -9,7 +9,7 @@ namespace AdventOfCode
             int threeOfAKind = 0;
             int twoOfAKind = 0;
 
-            string[] lines = System.IO.File.ReadAllLines(@"Day02.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"input/Day02.txt");
             foreach(string line in lines)
             {
                 ISet<char> uniqueChars = new HashSet<char>(line.ToCharArray());
@@ -43,7 +43,7 @@ namespace AdventOfCode
 
         public string GetIDs()
         {
-            string[] lines = System.IO.File.ReadAllLines(@"Day02.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"input/Day02.txt");
             foreach(string a in lines)
             {
                 foreach(string b in lines)

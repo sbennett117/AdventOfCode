@@ -27,7 +27,7 @@ namespace AdventOfCode
 
         public int LargestArea()
         {
-            string[] lines = System.IO.File.ReadAllLines(@"Day06.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"input/Day06.txt");
             List<Coordinate> points = new List<Coordinate>();
             for (int i = 0; i < lines.Length; i++)
             {
@@ -80,7 +80,7 @@ namespace AdventOfCode
 
         public int CloseRegion()
         {
-            string[] lines = System.IO.File.ReadAllLines(@"Day06.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"input/Day06.txt");
             List<Coordinate> points = new List<Coordinate>();
             for (int i = 0; i < lines.Length; i++)
             {

@@ -7,7 +7,7 @@ namespace AdventOfCode
         public int Calibrate()
         {
             int result = 0;
-            string[] lines = System.IO.File.ReadAllLines(@"Day01.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"input/Day01.txt");
             foreach(string s in lines)
             {
                 result += int.Parse(s);
@@ -19,7 +19,7 @@ namespace AdventOfCode
         {
             int frequency = 0;
             ISet<int> uniqueFreqs = new HashSet<int>();
-            string[] lines = System.IO.File.ReadAllLines(@"Day01.txt");
+            string[] lines = System.IO.File.ReadAllLines(@"input/Day01.txt");
             int index = 0;
 
             while (uniqueFreqs.Add(frequency))
