@@ -6,7 +6,7 @@ namespace AdventOfCode
     {
         static void Main(string[] args)
         {
-            new Day11().MostPowerfulSquare();
+            Console.WriteLine(new Day12().SumOfPots(50000000000));
         }
     }
 }
