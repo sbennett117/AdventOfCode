@@ -6,7 +6,7 @@ namespace AdventOfCode
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(new Day12().SumOfPots(50000000000));
+            Console.WriteLine(new Day13().LastCartStanding());
         }
     }
 }
