@@ -6,7 +6,7 @@ namespace AdventOfCode
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(new Day14().NextTenScores());
+            Console.WriteLine(new Day14().TimeUntilScore());
         }
     }
 }
