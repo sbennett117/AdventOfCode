@@ -20,4 +20,8 @@ I will be doing these solutions in flat-folder C#. I'm new to the language, but 
 | Day 11 | 2 Stars     |
 | Day 12 | 1 Star-DNF  |
 | Day 13 | 2 Stars     |
-| Day 14 | Not Started |
+| Day 14 | In Progress |
+| Day 15 | Not Started |
+| Day 16 | Not Started |
+| Day 17 | Not Started |
+| Day 18 | Not Started |
