@@ -23,5 +23,8 @@ I will be doing these solutions in flat-folder C#. I'm new to the language, but 
 | Day 14 | 2 Stars     |
 | Day 15 | Not Started |
 | Day 16 | Not Started |
-| Day 17 | Not Started |
+| Day 17 | 0 Stars-DNF |
 | Day 18 | Not Started |
+| Day 19 | Not Started |
+| Day 20 | Not Started |
+| Day 21 | Not Started |
