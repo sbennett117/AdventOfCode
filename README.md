@@ -4,9 +4,10 @@ Repository to hold solutions to the puzzles at https://adventofcode.com. Not sur
 
 # Current Progress
 
-| Day    | Progress    |
-| ------ | ----------- |
-| Day 01 | Not Started |
+| Day    | Progress  |
+| ------ | --------- |
+| Day 01 | Two Stars |
+| Day 02 | Two Stars |
 
 # History
 
