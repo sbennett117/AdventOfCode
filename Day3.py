@@ -1,3 +1,4 @@
+from decimal import Decimal
 import re
 import math
 
@@ -15,11 +16,17 @@ def count_part_numbers(input):
                 running_total += int(number)
     return running_total
 
+def parse_number(m, length):
+    return [m.group(), math.floor(Decimal(m.start()) / Decimal(length)), m.start() % length, m.end() % length]
+
+def parse_gear(g, length):
+    return [math.floor(Decimal(g.start()) / Decimal(length)), g.start() % length]
+
 def gears(input: str):
     split_input = input.splitlines()
     sanitised_input = input.replace("\n", "")
-    number_matches = [[m.group(), math.floor(m.start() / len(split_input)), m.start() % len(split_input), m.end() % len(split_input)] for m in re.finditer(r"[0-9]+", sanitised_input)]
-    gear_matches = [[math.floor(m.start() / len(split_input)), m.start() % len(split_input)] for m in re.finditer(r"\*", sanitised_input)]
+    number_matches = [parse_number(m, len(split_input)) for m in re.finditer(r"[0-9]+", sanitised_input)]
+    gear_matches = [parse_gear(g, len(split_input)) for g in re.finditer(r"\*", sanitised_input)]
     running_total = 0
     for row, column in gear_matches:
         filtered_nums = [n[0] for n in number_matches if abs(n[1]-row) < 2 and column in range(n[2]-1, n[3]+1)]
@@ -27,17 +34,17 @@ def gears(input: str):
             running_total += int(filtered_nums[0]) * int(filtered_nums[1])
     print(running_total)
 
-input="""467..114..
-...*......
-..35..633.
-......#...
-617*......
-.....+.58.
-..592.....
-......755.
-...$.*....
-.664.598.."""
+# input="""467..114..
+# ...*......
+# ..35..633.
+# ......#...
+# 617*......
+# .....+.58.
+# ..592.....
+# ......755.
+# ...$.*....
+# .664.598.."""
 with open("./inputs/Day3.txt") as r:
-    # input = r.read()
+    input = r.read()
     # print(count_part_numbers(input.splitlines()))
     gears(input)
