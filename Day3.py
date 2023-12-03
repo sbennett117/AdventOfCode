@@ -1,4 +1,5 @@
 import re
+import math
 
 def count_part_numbers(input):
     symbols = set(sum([re.findall(r"[^0-9\.]", x) for x in input], []))
@@ -15,16 +16,18 @@ def count_part_numbers(input):
     return running_total
 
 def gears(input: str):
-    number_matches = [m for m in re.finditer(r"[0-9]+", input)]
-    # split_input = input.splitlines()
-    # for i in range(len(split_input)):
-    #     for gear in re.findall(r"\*", input[i]):
-    #         print(f"({i},{gear.span()})")
+    split_input = input.splitlines()
+    sanitised_input = input.replace("\n", "")
+    number_matches = [[m.group(), math.floor(m.start() / len(split_input)), m.start() % len(split_input), m.end() % len(split_input)] for m in re.finditer(r"[0-9]+", sanitised_input)]
+    gear_matches = [[math.floor(m.start() / len(split_input)), m.start() % len(split_input)] for m in re.finditer(r"\*", sanitised_input)]
+    running_total = 0
+    for row, column in gear_matches:
+        filtered_nums = [n[0] for n in number_matches if abs(n[1]-row) < 2 and column in range(n[2]-1, n[3]+1)]
+        if len(filtered_nums) == 2:
+            running_total += int(filtered_nums[0]) * int(filtered_nums[1])
+    print(running_total)
 
-with open("./inputs/Day3.txt") as r:
-    # input = r.read()
-    # print(count_part_numbers(input.splitlines()))
-    input="""467..114..
+input="""467..114..
 ...*......
 ..35..633.
 ......#...
@@ -34,4 +37,7 @@ with open("./inputs/Day3.txt") as r:
 ......755.
 ...$.*....
 .664.598.."""
+with open("./inputs/Day3.txt") as r:
+    # input = r.read()
+    # print(count_part_numbers(input.splitlines()))
     gears(input)
