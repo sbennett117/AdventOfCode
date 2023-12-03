@@ -2,37 +2,35 @@ from decimal import Decimal
 import re
 import math
 
-def count_part_numbers(input):
-    symbols = set(sum([re.findall(r"[^0-9\.]", x) for x in input], []))
-    running_total = 0
-    for i in range(len(input)):
-        for match in re.finditer(r"[0-9]+", input[i]):
-            number = input[i][match.start():match.end()]
-            char_before = "" if match.start() == 0 else input[i][match.start()-1]
-            char_after = "" if match.end() == len(input[i]) else input[i][match.end()]
-            row_above = "" if i == 0 else input[i-1][match.start() if char_before == "" else match.start()-1:match.end() if char_after == "" else match.end()+1]
-            row_below = "" if i == len(input)-1 else input[i+1][match.start() if char_before == "" else match.start()-1:match.end() if char_after == "" else match.end()+1]
-            if any(x in char_before+char_after+row_above+row_below for x in symbols):
-                running_total += int(number)
-    return running_total
-
 def parse_number(m, length):
-    return [m.group(), math.floor(Decimal(m.start()) / Decimal(length)), m.start() % length, m.end() % length]
+    offset = math.floor(Decimal(m.start()) / Decimal(length))
+    row = math.floor(Decimal(m.start()-offset) / Decimal(length))
+    return [m.group(), row, (m.start()-row) % length, (m.end()-1-row) % length]
 
 def parse_gear(g, length):
-    return [math.floor(Decimal(g.start()) / Decimal(length)), g.start() % length]
+    row = math.floor(Decimal(g.start()) / Decimal(length))
+    return [row, g.start() % length]
+
+def part_nums(input: str):
+    num_of_lines = input.count("\n")
+    number_matches = [parse_number(m, num_of_lines) for m in re.finditer(r"[0-9]+", input)]
+    symbol_matches = [parse_gear(g, num_of_lines) for g in re.finditer(r"[^0-9\.]", input.replace("\n", ""))]
+    numbers = []
+    for num, row, start, finish in number_matches:
+        if [s for s in symbol_matches if abs(row-s[0]) < 2 and s[1] in range(start-1, finish+2)] != []:
+            numbers.append(int(num))
+    return sum(numbers)
 
 def gears(input: str):
-    split_input = input.splitlines()
-    sanitised_input = input.replace("\n", "")
-    number_matches = [parse_number(m, len(split_input)) for m in re.finditer(r"[0-9]+", sanitised_input)]
-    gear_matches = [parse_gear(g, len(split_input)) for g in re.finditer(r"\*", sanitised_input)]
+    num_of_lines = input.count("\n")
+    number_matches = [parse_number(m, num_of_lines) for m in re.finditer(r"[0-9]+", input)]
+    gear_matches = [parse_gear(g, num_of_lines) for g in re.finditer(r"\*", input.replace("\n", ""))]
     running_total = 0
     for row, column in gear_matches:
-        filtered_nums = [n[0] for n in number_matches if abs(n[1]-row) < 2 and column in range(n[2]-1, n[3]+1)]
+        filtered_nums = [n[0] for n in number_matches if abs(n[1]-row) < 2 and column in range(n[2]-1, n[3]+2)]
         if len(filtered_nums) == 2:
             running_total += int(filtered_nums[0]) * int(filtered_nums[1])
-    print(running_total)
+    return running_total
 
 # input="""467..114..
 # ...*......
@@ -46,5 +44,5 @@ def gears(input: str):
 # .664.598.."""
 with open("./inputs/Day3.txt") as r:
     input = r.read()
-    # print(count_part_numbers(input.splitlines()))
-    gears(input)
+    print(part_nums(input))
+    print(gears(input))

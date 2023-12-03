@@ -1,13 +1,14 @@
 # AdventOfCode
 
-Repository to hold solutions to the puzzles at https://adventofcode.com. Not sure what language to try this year, might see if I can get back into Python.
+Repository to hold solutions to the puzzles at https://adventofcode.com.
 
-# Current Progress
+# Current Progress (2023, Python)
 
 | Day    | Progress  |
 | ------ | --------- |
 | Day 01 | Two Stars |
 | Day 02 | Two Stars |
+| Day 03 | One Star  |
 
 # History
 
