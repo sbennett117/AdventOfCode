@@ -34,7 +34,7 @@ def part_2(input):
                 cards[i+score] = (win, sup, num + number_of)
     print(sum([n[2] for n in cards]))
 
-with open('./inputs/Day4.txt') as r:
+with open('./inputs/Day04.txt') as r:
     input = r.readlines()
     part_1(input)
     part_2(input)

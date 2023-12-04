@@ -42,7 +42,7 @@ def gears(input: str):
 # ......755.
 # ...$.*....
 # .664.598.."""
-with open("./inputs/Day3.txt") as r:
+with open("./inputs/Day03.txt") as r:
     input = r.read()
     print(part_nums(input))
     print(gears(input))

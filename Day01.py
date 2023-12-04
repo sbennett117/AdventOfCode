@@ -23,7 +23,7 @@ def part2():
         translated = list(map(replace, stripped))
         return int(translated[0] + translated[-1])
 
-    with open("./inputs/Day1.txt") as r:
+    with open("./inputs/Day01.txt") as r:
         input = r.read().splitlines()
         input = map(transform, input)
         print(sum(input))

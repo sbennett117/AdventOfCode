@@ -37,6 +37,6 @@ def find_powers(games):
     powers = [count["red"] * count["green"] * count["blue"] for count in games.values()]
     return sum(powers)
 
-with open("./inputs/Day2.txt") as r:
+with open("./inputs/Day02.txt") as r:
     print(check_legality(count_games(r.readlines())))
     print(find_powers(count_games(r.readlines())))
