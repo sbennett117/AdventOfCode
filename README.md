@@ -8,7 +8,8 @@ Repository to hold solutions to the puzzles at https://adventofcode.com.
 | ------ | --------- |
 | Day 01 | Two Stars |
 | Day 02 | Two Stars |
-| Day 03 | One Star  |
+| Day 03 | Two Stars |
+| Day 04 | Two Stars |
 
 # History
 
