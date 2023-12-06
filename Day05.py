@@ -5,18 +5,21 @@ def range_to_map(range_map: list[tuple[str, str, str]]):
             map_dict[int(source) + i] = int(dest) + i
     return map_dict
 
-def run_through_maps(seed, maps: list[dict[int, int]]):
-    running_result = maps[0].get(int(seed), int(seed))
-    for i in range(1, len(maps)):
-        running_result = maps[i].get(running_result, running_result)
-    return running_result
-
 def part_1(input: str):
     seeds, *range_maps = input.split("\n\n")
-    seeds = seeds.split(": ", 1)[1].split(" ")
-    range_maps = [[tuple(r.split(" ", 2)) for r in range_map.splitlines()[1:]] for range_map in range_maps]
-    maps = [range_to_map(rm) for rm in range_maps]
-    print(min([run_through_maps(seed, maps) for seed in seeds]))
+    named_ranges = [tuple(r.split(":\n")) for r in range_maps]
+    named_ranges = [(n, [tuple(r.split(" ", 2)) for r in range.splitlines()]) for n, range in named_ranges]
+    overall_map = dict()
+    named_ranges.reverse()
+    for name, range in named_ranges:
+        temp_map = dict()
+        rmap = range_to_map(range)
+        for key, value in rmap.items():
+            temp_map[key] = overall_map.get(value, value)
+        overall_map.update(temp_map)
+        # print(f"Finished {name}")
+    for seed in seeds.split(": ", 1)[1].split(" "):
+        print(overall_map.get(int(seed), seed))
 
 input="""seeds: 79 14 55 13
 
