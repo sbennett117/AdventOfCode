@@ -10,6 +10,8 @@ Repository to hold solutions to the puzzles at https://adventofcode.com.
 | Day 02 | Two Stars |
 | Day 03 | Two Stars |
 | Day 04 | Two Stars |
+| Day 05 | DNF       |
+| Day 06 | Two Stars |
 
 # History
 
