@@ -31,7 +31,7 @@ def evaluate_wildcards(hand: str):
     elif len(counts.keys()) == 3:
         if 3 in counts.values():
             # Could be JJJ34, 2223J, or 22234. J will prioritise four of a kind
-            return FOUR_OF_A_KIND if "J" in counts.keys() else FULL_HOUSE
+            return FOUR_OF_A_KIND if "J" in counts.keys() else THREE_OF_A_KIND
         elif counts.get("J") == 2:
             # JJ334, which becomes 33334
             return FOUR_OF_A_KIND
