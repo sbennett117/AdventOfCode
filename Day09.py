@@ -12,10 +12,7 @@ def predict_next_value(line: str, part_2 = False):
         last_row = tree[-1]
         tree.append([last_row[i + 1] - last_row[i] for i in range(len(last_row) - 1)])
     
-    tree.reverse()
-    for i in range(len(tree) - 1):
-        tree[i + 1].append(tree[i][-1] + tree[i+1][-1])
-    return tree[-1][-1]
+    return sum([tree[i-1][-1] for i in range(len(tree) - 1, 0, -1)])
 
 with open("inputs/Day09.txt") as r:
     input = r.readlines()
