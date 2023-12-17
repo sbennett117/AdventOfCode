@@ -15,6 +15,8 @@ Repository to hold solutions to the puzzles at https://adventofcode.com.
 | Day 07 | Two Stars |
 | Day 08 | One Star  |
 | Day 09 | Two Stars |
+| Day 10 | Skipped   |
+| Day 09 | One Star  |
 
 # History
 
