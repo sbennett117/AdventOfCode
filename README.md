@@ -20,6 +20,7 @@ Repository to hold solutions to the puzzles at https://adventofcode.com.
 | Day 12 | Skipped   |
 | Day 13 | One Star  |
 | Day 14 | One Star  |
+| Day 15 | Two Stars |
 
 # History
 
