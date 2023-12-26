@@ -1,25 +1,24 @@
-def range_to_map(range_map: list[tuple[str, str, str]]):
-    map_dict = dict()
-    for dest, source, count in range_map:
-        for i in range(int(count)):
-            map_dict[int(source) + i] = int(dest) + i
-    return map_dict
+
+def parse_range_map(range_map: str):
+    n, ranges = range_map.split(":\n")
+    split_ranges = [tuple(r.split(" ", 2)) for r in ranges.splitlines()]
+    r = [(int(source), int(count), int(dest)) for dest, source, count in split_ranges]
+    return (n, r)
+    
+def map_walk(seed, ranges):
+    current = int(seed)
+    for _, m in ranges:
+        for source, count, dest in m:
+            if source <= current and source + count > current:
+                current = dest + abs(source - current)
+                break
+    return current
 
 def part_1(input: str):
     seeds, *range_maps = input.split("\n\n")
-    named_ranges = [tuple(r.split(":\n")) for r in range_maps]
-    named_ranges = [(n, [tuple(r.split(" ", 2)) for r in range.splitlines()]) for n, range in named_ranges]
-    overall_map = dict()
-    named_ranges.reverse()
-    for name, range in named_ranges:
-        temp_map = dict()
-        rmap = range_to_map(range)
-        for key, value in rmap.items():
-            temp_map[key] = overall_map.get(value, value)
-        overall_map.update(temp_map)
-        # print(f"Finished {name}")
-    for seed in seeds.split(": ", 1)[1].split(" "):
-        print(overall_map.get(int(seed), seed))
+    named_ranges = [parse_range_map(r) for r in range_maps]
+
+    print(min([map_walk(seed, named_ranges) for seed in seeds.split(": ", 1)[1].split(" ")]))
 
 input="""seeds: 79 14 55 13
 

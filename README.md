@@ -10,7 +10,7 @@ Repository to hold solutions to the puzzles at https://adventofcode.com.
 | Day 02 | Two Stars |
 | Day 03 | Two Stars |
 | Day 04 | Two Stars |
-| Day 05 | DNF       |
+| Day 05 | One Star  |
 | Day 06 | Two Stars |
 | Day 07 | Two Stars |
 | Day 08 | One Star  |
@@ -21,7 +21,7 @@ Repository to hold solutions to the puzzles at https://adventofcode.com.
 | Day 13 | One Star  |
 | Day 14 | One Star  |
 | Day 15 | Two Stars |
-| Day 16 | Skipped   |
+| Day 16 | One Star  |
 | Day 17 | Skipped   |
 | Day 18 | Skipped   |
 | Day 19 | One Star  |
