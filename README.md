@@ -21,7 +21,7 @@ Repository to hold solutions to the puzzles at https://adventofcode.com.
 | Day 13 | One Star  |
 | Day 14 | One Star  |
 | Day 15 | Two Stars |
-| Day 16 | One Star  |
+| Day 16 | Two Stars |
 | Day 17 | Skipped   |
 | Day 18 | Skipped   |
 | Day 19 | One Star  |

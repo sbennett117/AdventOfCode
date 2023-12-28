@@ -1,9 +1,9 @@
 def move(x, y, dir):
-    if dir is "R":
+    if dir == "R":
         return (x, y + 1)
-    elif dir is "D":
+    elif dir == "D":
         return (x + 1, y)
-    elif dir is "L":
+    elif dir == "L":
         return (x, y - 1)
     else:
         return (x - 1, y)
@@ -42,6 +42,13 @@ def build_lightmap(input, line_len, line_count, start):
         
     return len(set([(x, y) for x, y, _ in visited]))
 
+def best_lightmap(input, line_len, line_count):
+    north = max([build_lightmap(input, line_len, line_count, (0, i, "D")) for i in range(line_len)])
+    south = max([build_lightmap(input, line_len, line_count, (line_count - 1, i, "U")) for i in range(line_len)])
+    west = max([build_lightmap(input, line_len, line_count, (i, 0, "L")) for i in range(line_count)])
+    east = max([build_lightmap(input, line_len, line_count, (i, line_len - 1, "R")) for i in range(line_count)])
+    return max(north, south, west, east)
+
 input=r""".|...\....
 |.-.\.....
 .....|-...
@@ -60,3 +67,4 @@ with open("inputs/Day16.txt") as r:
     line_count = input.count("\n")
     input = input.replace("\n", "")
     print(build_lightmap(input, line_len, line_count, (0, 0, "R")))
+    print(best_lightmap(input, line_len, line_count))
